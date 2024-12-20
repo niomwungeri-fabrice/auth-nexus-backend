@@ -1,8 +1,66 @@
+# CDK/TypeScript specific
 *.js
 !jest.config.js
 *.d.ts
-node_modules
+node_modules/
+.cdk.staging/
+cdk.out/
+dist/
+coverage/
+.nyc_output/
+.env*
+.DS_Store
+*.tsbuildinfo
 
-# CDK asset staging directory
-.cdk.staging
-cdk.out
+# Java specific (for /code directory)
+code/**/*.class
+code/**/target/
+code/**/build/
+code/**/out/
+code/**/bin/
+
+# Java IDE files
+code/**/.idea/
+code/**/*.iml
+code/**/*.iws
+code/**/*.ipr
+code/**/.settings/
+code/**/.project
+code/**/.classpath
+code/**/.vscode/
+
+# Java logs and temp files
+code/**/*.log
+code/**/logs/
+code/**/*.pid
+
+# Java package files
+code/**/*.jar
+code/**/*.war
+code/**/*.nar
+code/**/*.ear
+code/**/*.zip
+code/**/*.tar.gz
+code/**/*.rar
+
+# Maven specific
+code/**/.mvn/timing.properties
+code/**/.mvn/wrapper/maven-wrapper.jar
+code/**/pom.xml.tag
+code/**/pom.xml.releaseBackup
+code/**/pom.xml.versionsBackup
+code/**/pom.xml.next
+code/**/release.properties
+code/**/dependency-reduced-pom.xml
+code/**/buildNumber.properties
+
+# Spring Boot specific
+code/**/.spring-boot-devtools.properties
+code/**/application-*.properties
+!code/**/application.properties
+!code/**/application-example.properties
+
+# Test coverage reports
+code/**/coverage/
+code/**/.coverage
+code/**/jacoco.exec

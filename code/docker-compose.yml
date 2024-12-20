@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+  app:
+    container_name: auth-nexus-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/auth-nexus-dev-db
+      SPRING_DATASOURCE_USERNAME: authnexusadmin
+      SPRING_DATASOURCE_PASSWORD: authnexuspassword
+    depends_on:
+      - db
+    volumes:
+      - ./logs:/app/logs
+
+  db:
+    image: postgres:15
+    container_name: auth-nexus-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: authnexusadmin
+      POSTGRES_PASSWORD: authnexuspassword
+      POSTGRES_DB: auth-nexus-dev-db
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "authnexusadmin", "-d", "auth-nexus-dev-db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres-data:
